@@ -25,7 +25,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   vertical-align: baseline;
 }
 
@@ -89,7 +88,7 @@ h3 {
 }
 
 h4 {
-  font-size: 21px;
+  font-size: 19px;
 }
 
 h5 {
@@ -102,6 +101,8 @@ h6 {
 
 p {
   margin: 10px 0 15px 0;
+    padding: 0 20px;
+
 }
 
 footer p {
@@ -162,10 +163,8 @@ pre, code {
   width: 100%;
   color: #222;
   background-color: #fff;
-
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", monospace;
   font-size: 14px;
-
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -272,7 +271,7 @@ Full-Width Styles
 
 .inner {
   position: relative;
-  max-width: 640px;
+  max-width: 840px;
   padding: 20px 10px;
   margin: 0 auto;
 }
@@ -373,7 +372,20 @@ Full-Width Styles
 #footer_wrap {
   background: #212121;
 }
-
+.prettyprint{
+    max-width: 625px;
+    color:#ccc;
+    background-color: rgb(26, 26, 26) !important;
+}
+.question {
+    background: rgb(224, 224, 224);
+    padding: 5px;
+    cursor:pointer;
+}
+.answer{
+    background: rgb(236, 236, 236);
+    display:none;
+}
 
 
 /*******************************************************************************

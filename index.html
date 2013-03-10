@@ -1,70 +1,212 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Javascripttasks : Answers to Javascript task post by Dmitry Baranovskiy’s in his blog &quot;http://dmitry.baranovskiy.com/post/javascript-tasks&quot;" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Javascript Tasks</title>
-  <script src="javascripts/main.js"></script>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/sarathsaleem/JavaScriptTasks">View on GitHub</a>
-
-          <h1 id="project_title">Javascript Tasks</h1>
-          <h2 id="project_tagline">&quot; <a href="http://dmitry.baranovskiy.com/post/javascript-tasks"> Answers to Javascript task post by Dmitry Baranovskiy’s in his blog </a>&quot;</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/sarathsaleem/JavaScriptTasks/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/sarathsaleem/JavaScriptTasks/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
-
-<ul>
-	<li>
-		Find the biggest element in the array of numbers. Use function <code>Math.max</code> for this;
-	</li>
-    <li>
-        Transform array of numbers to array of functions that will alert that digits;
-    </li>
-    <li>
-        Sort array of objects by number of object properties;
-    </li>
-    <li>
-        Write a function which will return you first two times 1, then 2, then 3, then 5 and so on (Fibonacci numbers). Don’t use any global variables.
-    </li>
-    <li>
-        Make this syntax possible: <samp>var a = (5).plus(3).minus(6); //2</samp>
-    </li>
-    <li>
-        Make this syntax possible: <samp>var a = add(2)(3); //5</samp>
-    </li>
-</ul>    </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Javascripttasks maintained by <a href="https://github.com/sarathsaleem">sarathsaleem</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
     
+    <head>
+        <meta charset='utf-8' />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <meta name="description" content="Javascripttasks : Answers to Javascript task post by Dmitry Baranovskiy’s in his blog &quot;http://dmitry.baranovskiy.com/post/javascript-tasks&quot;The features in JS like Objects, Arrays, Closures, Prototype etc are coved in this questions. Each question can be approach in different ways , so I try to give different approaches to some questions. If you can find any better solution please contribute
+                    to this." />
+        <title>Javascript Tasks</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+        <script src="javascripts/jquery-1.9.1.min.js"></script>
+        <script src="javascripts/main.js"></script>
+    </head>
+    
+    <body>
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+            <header class="inner">
+                <a id="forkme_banner" href="https://github.com/sarathsaleem/JavaScriptTasks">View on GitHub</a>
+                 <h1 id="project_title">Javascript Tasks</h1>
 
-  </body>
+                 <h2 id="project_tagline">Answers to Javascript task post by &quot;Dmitry Baranovskiy&quot; in his blog <a href="http://dmitry.baranovskiy.com/post/javascript-tasks">  post </a></h2>
+
+            </header>
+        </div>
+        <!-- MAIN CONTENT -->
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                 <h2>What's this ?</h2>
+
+                <p>Here I will try to answer the questions posted by Dmitry Baranovskiy in his blog
+                    <a href="http://dmitry.baranovskiy.com/post/javascript-tasks">post</a>. It basically include intermediated to some extends of advance JavaScript concepts. All the questions are pretty simple but will help you to understand about core concepts JavaScript.</p>
+                <p>The features in JS like Objects, Arrays, Closures, Prototype etc are covered in this session. Each question can be approach in different ways , so I try to give different approaches to some questions. If you can find any better solution please contribute
+                    to this.</p>
+                 <h2>Questions</h2>
+
+                 <h4 class="question">1. Find the biggest element in the array of numbers. Use function <code>Math.max</code> for this</h4>
+
+                <div class="answer">
+                    <p>Ok.. So the first approach coming in the mind is just loop through the array and find the greater one.</p>
+<pre class="prettyprint">
+var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
+    //i just want the output
+    var i,
+        len = numberArray.length,
+        imGreater = numberArray[0];//let set the greater as the first element
+    for (i = 0; i < len; i++) {
+        if (imGreater < numberArray[i]) {
+            imGreater =  numberArray[i];
+        }
+    }
+    console.log(imGreater);//10</pre>
+
+                    <p>But in the question it is mentioned that we need to use
+                        <a href="http://www.w3schools.com/jsref/jsref_max.asp">Math.max</a>. It will return the number with the highest value.</p> <pre class="prettyprint">   
+    //OHH ..I want to use Math.max    
+    for (i = 0; i < len; i++) {
+        imGreater = Math.max(imGreater, numberArray[i]);
+    }
+    console.log(imGreater);//10</pre>
+
+                    <p>Fine , will try to get rid of the for loop , we can use "forEach" property of array but internally it do something similar but it don’t have older IE
+                        <a href="http://kangax.github.com/es5-compat-table/">support</a>
+                    </p> <pre class="prettyprint">  
+//hmmmm.. now i know about forEach --:) even the browser Compatibility 
+numberArray.forEach(function (num) {
+    imGreater = Math.max(imGreater, num);
+});
+console.log(imGreater);//10
+      </pre>
+
+                    <p>Ok. Let see the Math.max function, it can accept only numbers if we pass the array directly it will give NaN , so how can we convert the array into numbers as argument. Since it’s a function it has
+                        <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a>and the way to do that is well explained in
+                        <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math/max">MDN</a>
+                    </p> <pre class="prettyprint">
+    //I too  read MDN and all
+    imGreater = Math.max.apply(null, numberArray);
+    console.log(imGreater);//10</pre>
+
+                    <p>So this is the answer <strike>. ? </strike> I just showed all the ways, if any JS programmer did this at different stages of their learning curve.</p>
+                </div>
+                 <h4 class="question">2. Transform array of numbers to array of functions that will alert that digits</h4>
+
+                <div class="answer">
+                    <p>This question seems to be bit hard? Ok. Now what we want is an array of functions. Anything we can store in array, functions , objects, strings , number even array. So after converting it should look like this</p> <pre class="prettyprint">[function (){...}, function (){...}, function (){...}, function (){...}]</pre>
+
+                    <p>In this case we can iterate through the array and convert each element to a function and we can call the function like "numberArray[1](); numberArray[2]();"</p> <pre class="prettyprint">var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
+    for (i = 0; i < len; i++) {
+        var num = numberArray[i];
+        numberArray[i] = function () {
+            return num;
+        };
+    }
+ numberArray[1]();//7
+ numberArray[4]();//7</pre>
+
+                    <p>So here you can see all the functions are returning ‘7’ the last element of the array. Why .??</p>
+                    <p>The problem is ‘num’ variable value is 7 after the execution of for loop , and this value is returned by all the function . So in this approach I will use closure, you can find a
+                        <a href="http://www.google.co.in/search?q=use%20closure%20in%20for%20loop%20+%20js">lot of explanation</a>about closure using inside for loop.</p>
+<pre class="prettyprint">for (i = 0; i < len; i++) {
+        (function (num) {
+            numberArray[i] = function () {
+                return num;
+            };
+        }(numberArray[i]));
+    }
+ numberArray[1]();//2
+ numberArray[4]();//10</pre>
+
+                    <p>Confused with closure, don’t worry you can keep on
+                        <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">reading</a>about it :) . It’s the most powerful tool of JS, when you got the idea about it you can just start juggling with your code.</p>
+                </div>
+                 <h4 class="question">3. Sort array of objects by number of object properties</h4>
+
+                <div class="answer">
+                <p>We can store Object also in an array. So we want to sort an array based on the number of properties of that object. So to find the number of properties of an object there are few methods. Objects properties can also be iterated with <b>for(var i in object)</b> . JavaScript <a href="http://www.quirksmode.org/js/associative.html"> objects </a> acts like associative arrays.</p>
+                <pre class="prettyprint">var obj = {a : 'a', b : 'b', c : 'c'};
+var count = 0;
+ for (var i in obj){
+   if(obj.hasOwnProperty(i)) count++;
+ }
+console.log(count);//3</pre>
+                <p>But we have <b>Object.keys</b> in <a href="http://kangax.github.com/es5-compat-table/#Object.keys"> modern</a> browsers. So we can use that property and for sorting an array will use normal <b> Array.sort</b></p>
+                <pre class="prettyprint">var objectArray = [{a : 'a', b : 'b'}, {a : 'a'}, {a : 'a', b : 'b', c : 'c'}];
+objectArray.sort(function (a, b) {
+    return Object.keys(a).length - Object.keys(b).length;
+});
+console.log(objectArray);
+// [{a : 'a'}, {a : 'a', b : 'b'}, {a : 'a', b : 'b', c : 'c'}]
+                
+                </pre>
+                </div>
+                    <h4 class="question">4. Write a function which will return you first two times 1, then 2, then 3, then 5 and so on (Fibonacci numbers). Don’t use any global variables.</h4>
+
+                <div class="answer">
+                
+               <p> For this question, answer is posted in Baranovskiy’s <a href="http://dmitry.baranovskiy.com/post/fibonacci-function"> post </a> itself and its almost 5 years back.Ok.. I am trying this a bit late :). But when I execute the function in <a href="http://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode </a>(its 2013 rt), it gives an error, because arguments.callee <a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">cannot </a> be accessed in strict mode. </p>
+               <p>So I will try an another approach , and in the question its mentioned that we cannot use any global variable , I will go for a try with closure , Immediately-Invoked Function Expression (IIFE).</p>
+                <pre class="prettyprint">var fibonacci = (function () {
+    var arr = [0, 1];
+    return function () {
+        var num = arr[arr.length - 1],
+            len = arr.length;
+        arr.push(arr[len - 1] + arr[len - 2]);
+        return num;
+    };
+}());
+
+//test
+var i;
+for (i = 0; i < 10; i++) {
+    console.log(fibonacci());
+}
+//1,1,2,3,5,8,13,21,34,55
+</pre>
+                
+                </div>
+                 <h4 class="question">5. Make this syntax possible: var a = (5).plus(3).minus(6); //2</h4>
+
+                <div class="answer">
+                    <p>This seems like an impossible syntax. But when I think about prototype and Number object everything is possible. JavaScript objects have an attribute, a pointer to another object. This pointer is called as prototype.</p>
+<p>Here I will add plus and minus function to Number object's prototype , so it will be available for all numbers </p>
+<pre class="prettyprint">Number.prototype.plus = function (n) {
+    return this + n;
+};
+Number.prototype.minus = function (n) {
+    return this - n;
+};
+var a = (5).plus(3).minus(6);
+console.log(a);//2
+</pre>
+                    <p>I didnt find any other way :)</p>
+            </div>
+            <h4 class="question">6. Make this syntax possible: var a = add(2)(3); //5</h4>
+                <div class="answer">
+                
+                <p>This is my favorite question, and i like to play with closure.</p>
+                <pre class="prettyprint">var add = function (a) {
+    return function (b) {
+        return a + b;
+    };
+};
+
+console.log(add(2)(3));//5
+</pre>
+                    <p>Is it possible to do add(1)(2)(3)(4)... :) ?</p>
+                
+                </div>
+            </section>
+        </div>
+        <!-- FOOTER -->
+        <div id="footer_wrap" class="outer">
+            <footer class="inner">
+                <p class="copyright">Javascripttasks maintained by
+                    <a href="https://github.com/sarathsaleem">sarathsaleem</a>
+                </p>
+                <p>Published with
+                    <a href="http://pages.github.com">GitHub Pages</a>
+                </p>
+            </footer>
+        </div>
+        <script>
+            $(function () {
+                $('.question').bind('click tap', function () {
+                    $(this).next().slideToggle();
+                })
+            });
+        </script>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst"></script>
+    </body>
+
 </html>
