@@ -1,12 +1,7 @@
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, indent: 4, maxerr: 50 */
 /*global require, define, $, window, navigator,document,FileReader */
 
-/*
-* Find the biggest element in the array of numbers. Use function <code>Math.max</code> for this;
-*
-*
-*
-*/
+
 
 if (!Array.prototype.forEach) {
     Array.prototype.forEach = function (fn, scope) {
@@ -27,7 +22,12 @@ if (!Object.keys) {
         return k;
     }
 }
-
+/*
+* Find the biggest element in the array of numbers. Use function <code>Math.max</code> for this;
+*
+*
+*
+*/
 
 var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
 
