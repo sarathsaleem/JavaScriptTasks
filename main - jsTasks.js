@@ -57,7 +57,7 @@ var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
     });
     console.log(imGreater);
     
-    //oyeee I have x+ years of JS experience -- i too  read MDC and all
+    //I too  read MDC and all
     imGreater = Math.max.apply(null, numberArray);
     console.log(imGreater);
 
