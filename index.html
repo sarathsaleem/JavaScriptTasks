@@ -29,7 +29,7 @@
                  <h2>What's this ?</h2>
 
                 <p>Here I will try to answer the questions posted by Dmitry Baranovskiy in his blog
-                    <a href="http://dmitry.baranovskiy.com/post/javascript-tasks">post</a>. It basically include intermediated to some extends of advance JavaScript concepts. All the questions are pretty simple but will help you to understand about core concepts JavaScript.</p>
+                    <a target="_blank" href="http://dmitry.baranovskiy.com/post/javascript-tasks">post</a>. It basically include intermediated to some extends of advance JavaScript concepts. All the questions are pretty simple but will help you to understand about core concepts JavaScript.</p>
                 <p>The features in JS like Objects, Arrays, Closures, Prototype etc are covered in this session. Each question can be approach in different ways , so I try to give different approaches to some questions. If you can find any better solution please contribute
                     to this.</p>
                  <h2>Questions</h2>
@@ -52,7 +52,7 @@ var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
     console.log(imGreater);//10</pre>
 
                     <p>But in the question it is mentioned that we need to use
-                        <a href="http://www.w3schools.com/jsref/jsref_max.asp">Math.max</a>. It will return the number with the highest value.</p> <pre class="prettyprint">   
+                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max">Math.max</a>. It will return the number with the highest value.</p> <pre class="prettyprint">   
     //OHH ..I want to use Math.max    
     for (i = 0; i < len; i++) {
         imGreater = Math.max(imGreater, numberArray[i]);
@@ -60,7 +60,7 @@ var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
     console.log(imGreater);//10</pre>
 
                     <p>Fine , will try to get rid of the for loop , we can use "forEach" property of array but internally it do something similar but it don’t have older IE
-                        <a href="http://kangax.github.com/es5-compat-table/">support</a>
+                        <a target="_blank" href="http://kangax.github.com/es5-compat-table/">support</a>
                     </p> <pre class="prettyprint">  
 //hmmmm.. now i know about forEach --:) even the browser Compatibility 
 numberArray.forEach(function (num) {
@@ -70,8 +70,8 @@ console.log(imGreater);//10
       </pre>
 
                     <p>Ok. Let see the Math.max function, it can accept only numbers if we pass the array directly it will give NaN , so how can we convert the array into numbers as argument. Since it’s a function it has
-                        <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a>and the way to do that is well explained in
-                        <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math/max">MDN</a>
+                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a>and the way to do that is well explained in
+                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math/max">MDN</a>
                     </p> <pre class="prettyprint">
     //I too  read MDN and all
     imGreater = Math.max.apply(null, numberArray);
@@ -88,7 +88,7 @@ console.log(imGreater);//10
     for (i = 0; i < len; i++) {
         var num = numberArray[i];
         numberArray[i] = function () {
-            return num;
+           console.log(num);
         };
     }
  numberArray[1]();//7
@@ -96,11 +96,11 @@ console.log(imGreater);//10
 
                     <p>So here you can see all the functions are returning ‘7’ the last element of the array. Why .??</p>
                     <p>The problem is ‘num’ variable value is 7 after the execution of for loop , and this value is returned by all the function . So in this approach I will use closure, you can find a
-                        <a href="http://www.google.co.in/search?q=use%20closure%20in%20for%20loop%20+%20js">lot of explanation</a>about closure using inside for loop.</p>
+                        <a target="_blank" href="http://www.google.com/search?q=use%20closure%20in%20for%20loop%20+%20js">lot of explanation</a>about closure using inside for loop.</p>
 <pre class="prettyprint">for (i = 0; i < len; i++) {
         (function (num) {
             numberArray[i] = function () {
-                return num;
+                console.log(num);
             };
         }(numberArray[i]));
     }
@@ -108,7 +108,18 @@ console.log(imGreater);//10
  numberArray[4]();//10</pre>
 
                     <p>Confused with closure, don’t worry you can keep on
-                        <a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">reading</a>about it :) . It’s the most powerful tool of JS, when you got the idea about it you can just start juggling with your code.</p>
+                        <a target="_blank" href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">reading</a>about it :) . It’s the most powerful tool of JS, when you got the idea about it you can just start juggling with your code.</p>
+                <p>Ok, so the same thing we can achive with native <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">map</a> method of an array.</p>
+                    <pre class="prettyprint">
+var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
+numberArray = numberArray.map(function (val) {
+    return function () {
+        console.log(val);
+    };
+});
+numberArray[1](); //2
+numberArray[4](); //10 </pre>
+                    
                 </div>
                  <h4 class="question">3. Sort array of objects by number of object properties</h4>
 
@@ -120,7 +131,7 @@ var count = 0;
    if(obj.hasOwnProperty(i)) count++;
  }
 console.log(count);//3</pre>
-                <p>But we have <b>Object.keys</b> in <a href="http://kangax.github.com/es5-compat-table/#Object.keys"> modern</a> browsers. So we can use that property and for sorting an array will use normal <b> Array.sort</b></p>
+                <p>But we have <b>Object.keys</b> in <a target="_blank" href="http://kangax.github.com/es5-compat-table/#Object.keys"> modern</a> browsers. So we can use that property and for sorting an array will use normal <b> Array.sort</b></p>
                 <pre class="prettyprint">var objectArray = [{a : 'a', b : 'b'}, {a : 'a'}, {a : 'a', b : 'b', c : 'c'}];
 objectArray.sort(function (a, b) {
     return Object.keys(a).length - Object.keys(b).length;
@@ -134,7 +145,7 @@ console.log(objectArray);
 
                 <div class="answer">
                 
-               <p> For this question, answer is posted in Baranovskiy’s <a href="http://dmitry.baranovskiy.com/post/fibonacci-function"> post </a> itself and its almost 5 years back.Ok.. I am trying this a bit late :). But when I execute the function in <a href="http://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode </a>(its 2013 rt), it gives an error, because arguments.callee <a href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">cannot </a> be accessed in strict mode. </p>
+               <p> For this question, answer is posted in Baranovskiy’s <a target="_blank" href="http://dmitry.baranovskiy.com/post/fibonacci-function"> post </a> itself and its almost 5 years back.Ok.. I am trying this a bit late :). But when I execute the function in <a target="_blank" href="http://www.nczonline.net/blog/2012/03/13/its-time-to-start-using-javascript-strict-mode/">strict mode </a>(its 2013 rt), it gives an error, because arguments.callee <a target="_blank" href="http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/">cannot </a> be accessed in strict mode. </p>
                <p>So I will try an another approach , and in the question its mentioned that we cannot use any global variable , I will go for a try with closure , Immediately-Invoked Function Expression (IIFE).</p>
                 <pre class="prettyprint">var fibonacci = (function () {
     var arr = [0, 1];
