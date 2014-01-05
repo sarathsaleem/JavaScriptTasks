@@ -53,7 +53,7 @@ var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
 
                     <p>But in the question it is mentioned that we need to use
                         <a href="http://www.w3schools.com/jsref/jsref_max.asp">Math.max</a>. It will return the number with the highest value.</p> <pre class="prettyprint">   
-    //OHH ..I want to use Math.max    
+    //But ..I want to use Math.max    
     for (i = 0; i < len; i++) {
         imGreater = Math.max(imGreater, numberArray[i]);
     }
@@ -62,7 +62,7 @@ var numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
                     <p>Fine , will try to get rid of the for loop , we can use "forEach" property of array but internally it do something similar but it don’t have older IE
                         <a href="http://kangax.github.com/es5-compat-table/">support</a>
                     </p> <pre class="prettyprint">  
-//hmmmm.. now i know about forEach --:) even the browser Compatibility 
+
 numberArray.forEach(function (num) {
     imGreater = Math.max(imGreater, num);
 });
@@ -73,7 +73,7 @@ console.log(imGreater);//10
                         <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/apply">apply</a>and the way to do that is well explained in
                         <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math/max">MDN</a>
                     </p> <pre class="prettyprint">
-    //I too  read MDN and all
+    
     imGreater = Math.max.apply(null, numberArray);
     console.log(imGreater);//10</pre>
 
